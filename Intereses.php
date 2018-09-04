@@ -56,11 +56,11 @@
                 <div id="empresa<?echo $count;?>" class="container">
 
                         <!-- Nombre empresa <?echo $count;?>-->
-                        <form method="post" name="form2" id="form2">
+                        <form method="post" name="form<?echo $count;?>" id="form<?echo $count;?>">
                             <div class="row">
                                 <div class="col s12 m12 l12 xl12  z-depth-1">
 
-                                    <div class="row bw">
+                                    <div class="row">
                                         <div class="card-panel bw">
                                             <span class="black-text center">
                                                 <h5 class="white-text"><?echo $ResConsulta['nombre'];?></h5>   
@@ -71,7 +71,7 @@
                                     <!-- productos -->
                                     <div class="row">
                                         <span class="black-text center">
-                                            <h5>Productos</h5>   
+                                            <h5>Descripción</h5>   
                                         </span>
                                     </div>
                                     <div class="row">
