@@ -220,7 +220,7 @@
                             <!-- clientes -->
                             <div class="col s12 m12 l6 xl6 borlef">
                                 <div class="input-field col s12 m12 l12 xl12">
-                                    <textarea placeholder="" id="clientes" name="clientes" class="materialize-textarea" data-length="100" required></textarea>
+                                    <textarea placeholder="" id="clientes" name="clientes" class="materialize-textarea" data-length="1000" required></textarea>
                                     <label for="clientes">Principales Clientes</label>
                                 </div>
                             </div>
@@ -228,7 +228,7 @@
                             <!-- Descripción de la Empresa  -->
                             <div class="col s12 m12 l6 xl6">
                                 <div class="input-field col s12 m12 l12 xl12">
-                                    <textarea placeholder="" id="desc" name="desc" class="materialize-textarea" data-length="100" required></textarea>
+                                    <textarea placeholder="" id="desc" name="desc" class="materialize-textarea" data-length="1000" required></textarea>
                                     <label for="desc">Descripción de la Empresa</label>
                                 </div>
                             </div>
