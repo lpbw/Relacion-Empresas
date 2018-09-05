@@ -43,6 +43,35 @@
     <body>
         <div class="loader"></div>
 
+        <!-- informacion general -->
+        <div id="introduccion" class="container">
+            <div class="row">
+                <div class="col s12 m12 l12 xl12  z-depth-1">
+
+                    <div class="row">
+                        <div class="card-panel bw">
+                            <span class="black-text center">
+                                <h5 class="white-text">Información General</h5>   
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s12 m12 l12 xl12">
+                            <p>
+                            Canacintra, BlueWolf, Gobierno del Estado y Gobierno del Municipio de Chihuahua te invitan a participar este 11 de Octubre en la Misión Comercial Navarra 2018 se llevará a cabo en el Centro de Convenciones Chihuahua, en donde podrás encontrar empresas provenientes de Navarra España, en donde el objetivo principal es crear alianzas estratégicas con empresarios Chihuahuenses que estén interesados en participar y expandirse a nuevos mercados, o bien, interesados en la distribución de productos europeos en México.
+                            </p>
+                            <p>
+                            A continuación podrás encontrar el listado de las empresas visitantes y sus áreas de interés, páginas web y experiencia de estas mismas en mercados internacionales, si estas interesado en participar y tener encuentros de negocios puedes realizar tu registro aquí mismo o comunicarte al (614) 191 11 36 con Lizbeth Martínez.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- informacion general -->
+
         <!-- introduccion -->
         <div id="introduccion" class="container">
             <div class="row">
@@ -58,12 +87,13 @@
 
                     <div class="row">
                         <div class="col s12 m12 l12 xl12">
-                            <p>
-                                Canacintra, BlueWolf, Gobierno del Estado y Gobierno del Municipio de Chihuahua te invita a participar este 11 de Octubre en la Misión Comercial 2018 se llevará a cabo en el Centro de Convenciones Chihuahua, en donde podrás encontrar empresas provenientes de Navarra España, en donde el objetivo principal es crear alianzas estratégicas con empresarios Chihuahuenses que estén interesados en participar y expandirse a nuevos mercados, o bien, interesados en la distribución de productos europeos en México.
-                            </p>
-                            <p>
-                                Para mayor información, visita nuestra página, en donde podrás encontrar el listado de las empresas visitantes, páginas web y experiencia de estas mismas en mercados internacionales, si estas interesado puedes realizar tu registro aquí mismo o comunicarte al (614) 191 11 36 con Lizbeth Martínez.
-                            </p>
+                            <p>Descripción:</p>
+                            <p>Aquí podrás encontrar información general de las empresas visitantes como el nombre, experiencia internacional y producto o servicio que ofrece.</p>
+                            <p>Intereses:</p>
+                            <p>Aquí podrás encontrar los diversos intereses que a la empresa visitante le interesa encontrar en Chihuahua.</p>
+                            <p>Inscripción: </p>
+                            <p>Para poder realizar tu registro es necesario que selecciones los intereses que con tu experiencia puedes ofrecer.</p>
+                            <p>Además es necesario proporciones los datos que se solicitan y dar click en “Resgistrarse”.</p>
                         </div>
                     </div>
 
@@ -72,9 +102,10 @@
         </div>
         <!-- introduccion-->
 
+
         <?
             $count=0;
-            $Consulta_espana = "SELECT * FROM espana ORDER BY id_espana";
+            $Consulta_espana = "SELECT * FROM espana ORDER BY orden";
             $ResultadoConsulta = mysql_query($Consulta_espana) or die("La consulta a espana : $Consulta_espana" . mysql_error());
             while ($ResConsulta = mysql_fetch_assoc($ResultadoConsulta))
             {
@@ -110,7 +141,7 @@
                                             </span>
                                             <br><br>
                                             <span>
-                                            Contacto: 
+                                            Web: 
                                                 <?echo nl2br($ResConsulta['contacto']);?>
                                             </span>
                                         </div>
@@ -230,6 +261,7 @@
                                 <div class="input-field col s12 m12 l12 xl12">
                                     <textarea placeholder="" id="desc" name="desc" class="materialize-textarea" data-length="1000" required></textarea>
                                     <label for="desc">Descripción de la Empresa</label>
+                                    <p>(Área de actividad, áreas de conocimiento, capacidades, experiencia previa internacional, descripción de productos/Servicios)</p>
                                 </div>
                             </div>
 
