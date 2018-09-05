@@ -140,10 +140,10 @@
                                                 <?echo nl2br($ResConsulta['descripcion']);?>
                                             </span>
                                             <br><br>
-                                            <span>
-                                            Web: 
-                                                <?echo nl2br($ResConsulta['contacto']);?>
-                                            </span>
+                                            
+                                            Web:<a href="http://<?echo $ResConsulta['contacto'];?>" target="_blank"><?echo nl2br($ResConsulta['contacto']);?></a>
+                                                
+                                           
                                         </div>
                                         
                                         <div class="col s12 m12 l6 xl5 offset-xl1">
