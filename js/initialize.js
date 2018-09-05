@@ -16,7 +16,7 @@ $(document).ready(function(){
     $('select').formSelect();
 
     //inputs
-    $('input#input_text, textarea#textarea2').characterCounter();
+    $('textarea#clientes').characterCounter();
 
     //datepicker
     $('.datepicker').datepicker({
