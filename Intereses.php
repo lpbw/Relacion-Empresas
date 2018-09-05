@@ -37,6 +37,63 @@
         <script>
             $(document).ready(function(){
                 $(".loader").fadeOut("slow");
+                $("#NombreEmpresa1").hide();
+                        $("#localildad1").hide();
+                        $("#participante1").hide();
+                        $("#tel1").hide();
+                        $("#correo1").hide();
+                        $("#desc1").hide();
+                        $("#clientes1").hide();
+
+                $("#TipoEmpresa").change(function()
+                {
+                    var tipo = $('select[name="TipoEmpresa"] option:selected').text();
+                    if(tipo != "Seleccione una Opción")
+                    {
+                        if (tipo != "Empresa")
+                        {
+                            $("#NombreEmpresa1").show();
+                            $("#localildad1").show();
+                            $("#participante1").show();
+                            $("#tel1").show();
+                            $("#correo1").show();
+                            $("#desc1").hide();
+                            $("#clientes1").hide();
+                            if (tipo == "Asociación" || tipo == "Centro de Investigación" || tipo == "Dependencia")
+                            {
+                                $("#descripcion").text("Descripción de Actividad"); 
+                                $("#desc1").show();
+                                
+                            }
+                             
+                        }
+                        else
+                        {
+                            
+                            $("#NombreEmpresa1").show();
+                            $("#localildad1").show();
+                            $("#participante1").show();
+                            $("#tel1").show();
+                            $("#correo1").show();
+                            $("#descripcion").text("Descripción de la Empresa");
+                            $("#desc1").show();
+                            $("#clientes1").show();
+                        }
+                        
+                        console.log(tipo);
+                        $("#NEmpresa").text("Nombre de "+tipo);
+                    }
+                    else
+                    {
+                        $("#NombreEmpresa1").hide();
+                        $("#localildad1").hide();
+                        $("#participante1").hide();
+                        $("#tel1").hide();
+                        $("#correo1").hide();
+                        $("#desc1").hide();
+                        $("#clientes1").hide();
+                    }
+                });
             });
         </script>
     </head>
@@ -59,7 +116,7 @@
                     <div class="row">
                         <div class="col s12 m12 l12 xl12">
                             <p>
-                            Canacintra, BlueWolf, Gobierno del Estado y Gobierno del Municipio de Chihuahua te invitan a participar este 11 de Octubre en la Misión Comercial Navarra 2018 se llevará a cabo en el Centro de Convenciones Chihuahua, en donde podrás encontrar empresas provenientes de Navarra España, en donde el objetivo principal es crear alianzas estratégicas con empresarios Chihuahuenses que estén interesados en participar y expandirse a nuevos mercados, o bien, interesados en la distribución de productos europeos en México.
+                            Canacintra, BlueWolf, Gobierno del Estado y Gobierno del Municipio de Chihuahua te invitan a participar este 11 de Octubre en la Misión Comercial Navarra 2018 se llevará a cabo en el Centro de Convenciones Chihuahua, en donde podrás encontrar empresas provenientes de Navarra España, el objetivo principal es crear alianzas estratégicas con empresarios Chihuahuenses que estén interesados en participar y expandirse a nuevos mercados, o bien, interesados en la distribución de productos europeos en México.
                             </p>
                             <p>
                             A continuación podrás encontrar el listado de las empresas visitantes y sus áreas de interés, páginas web y experiencia de estas mismas en mercados internacionales, si estas interesado en participar y tener encuentros de negocios puedes realizar tu registro aquí mismo o comunicarte al (614) 191 11 36 con Lizbeth Martínez.
@@ -194,30 +251,36 @@
                         <div class="row">
                             <div class="card-panel bw">
                                 <span class="black-text center">
-                                        <h5 class="white-text">Requerimientos de inscripción</h5>   
+                                        <h5 class="white-text">Inscripción</h5>   
                                 </span>
                             </div>
                         </div>  
 
                         <div class="row">
-                            <!-- Nombre Empresa -->
-                            <div class="col s12 m12 l6 xl6 borlef">
+                            <!-- Tipo Empresa -->
+                            <div class="col s12 m12 l6 xl6 ">
                                 <div class="input-field col s12 m12 l12 xl12">
-                                    <input placeholder="" name="nombre" id="nombre" type="text" class="validate" required>
-                                    <label for="nombre">Nombre Empresa</label>
+                                    <select name="TipoEmpresa" id="TipoEmpresa" class="browser-default">
+                                        <option value="0">Seleccione una Opción</option>
+                                        <option value="1">Empresa</option>
+                                        <option value="2">Asociación</option>
+                                        <option value="3">Centro de Investigación</option>
+                                        <option value="4">Universidad</option>
+                                        <option value="5">Dependencia</option>
+                                    </select>
                                 </div>
                             </div>
 
-                            <!-- Nombre Comercial -->
-                            <div class="col s12 m12 l6 xl6">
+                            <!-- Nombre empresa -->
+                            <div class="col s12 m12 l6 xl6" id="NombreEmpresa1">
                                 <div class="input-field col s12 m12 l12 xl12">
-                                    <input placeholder="" name="comercial" id="comercial" type="text" class="validate" required>
-                                    <label for="comercial">Nombre Comercial</label>
+                                    <input placeholder="" name="NombreEmpresa" id="NombreEmpresa" type="text" class="validate" required>
+                                    <label for="NombreEmpresa" id="NEmpresa"></label>
                                 </div>
                             </div>
 
                             <!-- Localidad -->
-                            <div class="col s12 m12 l6 xl6 borlef">
+                            <div class="col s12 m12 l6 xl6" id="localildad1">
                                 <div class="input-field col s12 m12 l12 xl12">
                                     <input placeholder="" name="localildad" id="localildad" type="text" class="validate" required>
                                     <label for="comercial">Localildad</label>
@@ -225,15 +288,15 @@
                             </div>
 
                              <!-- Persona participante -->
-                             <div class="col s12 m12 l6 xl6">
+                             <div class="col s12 m12 l6 xl6" id="participante1">
                                 <div class="input-field col s12 m12 l12 xl12">
                                     <input placeholder="" name="participante" id="participante" type="text" class="validate" required>
-                                    <label for="comercial">Nombre De Persona participante</label>
+                                    <label for="comercial">Nombre de Persona Participante</label>
                                 </div>
                             </div>
 
                              <!-- Telefono -->
-                             <div class="col s12 m12 l6 xl6 borlef">
+                             <div class="col s12 m12 l6 xl6" id="tel1">
                                 <div class="input-field col s12 m12 l12 xl12">
                                     <input placeholder="" name="tel" id="tel" type="text" class="validate" required>
                                     <label for="comercial">Teléfono</label>
@@ -241,7 +304,7 @@
                             </div>
 
                              <!--  Correo -->
-                             <div class="col s12 m12 l6 xl6">
+                             <div class="col s12 m12 l6 xl6" id="correo1">
                                 <div class="input-field col s12 m12 l12 xl12">
                                     <input placeholder="" name="correo" id="correo" type="text" class="validate" required>
                                     <label for="comercial">Correo Electrónico</label>
@@ -249,7 +312,7 @@
                             </div>
 
                             <!-- clientes -->
-                            <div class="col s12 m12 l6 xl6 borlef">
+                            <div class="col s12 m12 l6 xl6" id="clientes1">
                                 <div class="input-field col s12 m12 l12 xl12">
                                     <textarea placeholder="" id="clientes" name="clientes" class="materialize-textarea" data-length="1000" required></textarea>
                                     <label for="clientes">Principales Clientes</label>
@@ -257,11 +320,11 @@
                             </div>
                             
                             <!-- Descripción de la Empresa  -->
-                            <div class="col s12 m12 l6 xl6">
+                            <div class="col s12 m12 l6 xl6" id="desc1">
                                 <div class="input-field col s12 m12 l12 xl12">
                                     <textarea placeholder="" id="desc" name="desc" class="materialize-textarea" data-length="1000" required></textarea>
-                                    <label for="desc">Descripción de la Empresa</label>
-                                    <p>(Área de actividad, áreas de conocimiento, capacidades, experiencia previa internacional, descripción de productos/Servicios)</p>
+                                    <label for="desc" id="descripcion">Descripción de la Empresa</label>
+                                    <p style="font-size:10px;">(Área de actividad, áreas de conocimiento, capacidades, experiencia previa internacional, descripción de productos/Servicios)</p>
                                 </div>
                             </div>
 
