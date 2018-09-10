@@ -1,5 +1,36 @@
 <?php
     include "coneccion.php";
+
+    // Guardar datos
+    if ($_POST['registro']=="Registrarse")
+    {
+        $TipoEmpresa=$_POST['TipoEmpresa'];
+        $Nombre=$_POST['NombreEmpresa'];
+        $localidad=$_POST['localildad'];
+        $persona=$_POST['persona'];
+        $tel=$_POST['tel'];
+        $correo=$_POST['correo'];
+        $clientes=$_POST['clientes'];
+        $descripcion=$_POST['desc'];
+
+        $InsertEmpresa = "INSERT INTO chihuahua(tipo,nombre,localidad,persona,telefono,correo,clientes,descripcion)VALUES($TipoEmpresa,'$Nombre','$localidad','$persona','$tel','$correo','$clientes','$descripcion')";
+        $ResultadoInsert = mysql_query($InsertEmpresa) or die("Query fallo: $InsertEmpresa" . mysql_error());
+        $IdEmpresa = mysql_insert_id();
+
+        $intereses = $_POST['interes'];
+        //echo "<script>alert('$intereses');</script>";
+        foreach ($intereses as $interes) {
+            //echo "<script>alert('$interes');</script>";
+            $InsertRelacion = "INSERT INTO espana_chihuahua(id_chih,id_interes)VALUES($IdEmpresa,$interes)";
+            $ResultadoInsert = mysql_query($InsertRelacion) or die("Query fallo: $InsertRelacion" . mysql_error());
+            $flag=true;
+        }
+
+        if ($flag==true)
+        {
+          echo "<script>alert('Guardado con exito!!');</script>";
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -59,11 +90,13 @@
                             $("#correo1").show();
                             $("#desc1").hide();
                             $("#clientes1").hide();
+                            $("#desc").removeAttr('required');
+                            $("#clientes").removeAttr('required');
                             if (tipo == "Asociación" || tipo == "Centro de Investigación" || tipo == "Dependencia")
                             {
                                 $("#descripcion").text("Descripción de Actividad"); 
                                 $("#desc1").show();
-                                
+                                $("#desc").attr('required','true');
                             }
                              
                         }
@@ -78,6 +111,8 @@
                             $("#descripcion").text("Descripción de la Empresa");
                             $("#desc1").show();
                             $("#clientes1").show();
+                            $("#desc").attr('required','true');
+                            $("#clientes").attr('required','true');
                         }
                         
                         console.log(tipo);
@@ -173,7 +208,7 @@
                 <div id="empresa<?echo $count;?>" class="container">
 
                         <!-- Nombre empresa <?echo $count;?>-->
-                        <form method="post" name="form<?echo $count;?>" id="form<?echo $count;?>">
+                        <form method="post" name="formulario" id="formulario" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col s12 m12 l12 xl12  z-depth-1">
 
@@ -219,7 +254,7 @@
                                             
                                                     <p class="left-align">
                                                         <label>
-                                                            <input type="checkbox" name="interes[]" id="interes<?echo $CountIntereses?>"/>
+                                                            <input type="checkbox" name="interes[]" id="interes" value="<?echo $ResIntereses['id_interes']?>"/>
                                                             <span>
                                                                 <? echo $ResIntereses['interes'];?>
                                                             </span>
@@ -234,7 +269,7 @@
                                     <!--fin  Descripción -->
                                 </div>
                             </div>
-                        </form>
+                        
                         
                 </div>
                 <!-- fin Empresa <?echo $count;?> -->
@@ -244,7 +279,7 @@
         
         <!-- informacion de empresa interesada -->
         <div id="infoempresa" class="container">
-            <form method="post" name="empresainteresada" id="empresainteresada">
+            
                 <div class="row">
                     <div class="col s12 m12 l12 xl12  z-depth-1">
 
@@ -283,7 +318,7 @@
                             <div class="col s12 m12 l6 xl6" id="localildad1">
                                 <div class="input-field col s12 m12 l12 xl12">
                                     <input placeholder="" name="localildad" id="localildad" type="text" class="validate" required>
-                                    <label for="comercial">Localildad</label>
+                                    <label for="localidad">Localildad</label>
                                 </div>
                             </div>
 
@@ -299,7 +334,7 @@
                              <div class="col s12 m12 l6 xl6" id="tel1">
                                 <div class="input-field col s12 m12 l12 xl12">
                                     <input placeholder="" name="tel" id="tel" type="text" class="validate" required>
-                                    <label for="comercial">Teléfono</label>
+                                    <label for="tel">Teléfono</label>
                                 </div>
                             </div>
 
@@ -307,7 +342,7 @@
                              <div class="col s12 m12 l6 xl6" id="correo1">
                                 <div class="input-field col s12 m12 l12 xl12">
                                     <input placeholder="" name="correo" id="correo" type="text" class="validate" required>
-                                    <label for="comercial">Correo Electrónico</label>
+                                    <label for="correo">Correo Electrónico</label>
                                 </div>
                             </div>
 
@@ -332,7 +367,7 @@
 
                         <div class="row">
                                 <div class="input-field col s12 m12 l6 xl6 offset-xl5">
-                                <input type="submit" value="Registrarse" name="registro" id="registro" class="btn  blue darken-2" onClick="return guarda('<? echo $id;?>');">
+                                    <input type="submit" value="Registrarse" name="registro" id="registro" class="btn  blue darken-2">
                                 </div>
                         </div>
 
