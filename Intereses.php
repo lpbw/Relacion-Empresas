@@ -90,6 +90,7 @@
                             $("#correo1").show();
                             $("#desc1").hide();
                             $("#clientes1").hide();
+                            $("#parrafo").hide();
                             $("#desc").removeAttr('required');
                             $("#clientes").removeAttr('required');
                             if (tipo == "Asociación" || tipo == "Centro de Investigación" || tipo == "Dependencia")
@@ -113,6 +114,7 @@
                             $("#clientes1").show();
                             $("#desc").attr('required','true');
                             $("#clientes").attr('required','true');
+                            $("#parrafo").show();
                         }
                         
                         console.log(tipo);
@@ -359,7 +361,7 @@
                                 <div class="input-field col s12 m12 l12 xl12">
                                     <textarea placeholder="" id="desc" name="desc" class="materialize-textarea" data-length="1000" required></textarea>
                                     <label for="desc" id="descripcion">Descripción de la Empresa</label>
-                                    <p style="font-size:10px;">(Área de actividad, áreas de conocimiento, capacidades, experiencia previa internacional, descripción de productos/Servicios)</p>
+                                    <p style="font-size:10px;" id="parrafo">(Área de actividad, áreas de conocimiento, capacidades, experiencia previa internacional, descripción de productos/Servicios)</p>
                                 </div>
                             </div>
 
@@ -376,7 +378,48 @@
             </form> 
         </div>
         <!-- fin de informacion de empresa interesada -->
+        <footer class="page-footer white">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12 m12 l12 xl12">
+                            <div class="col s6 m3 l2 xl2">
+                                <img src="images/imeanticipa.png" class="responsive-img">
+                            </div>
+                            <div class="col s6 m2 l2 xl2 offset-xl1">
+                                <img src="images/bw.png" class="responsive-img">
+                            </div>
+                            
+                            <!-- <div class="col s8 m3 l3 xl3">
+                                <img src="images/salle.png" class="responsive-img">
+                            </div> -->
+                            <div class="col s4 m2 l3 xl1 offset-xl1">
+                                <img src="images/canacintrap.png" class="responsive-img">
+                            </div>
+                            <div class="col s8 m2 l1 xl1 offset-xl1">
+                                <img src="images/valor.jpeg" class="responsive-img">
+                            </div>
+                            <div class="col s8 m4 l2 xl2 offset-xl1">
+                                <img src="images/logodesarrolloeconomico2.jpg" class="responsive-img">
+                            </div>
+                        </div>
+                    </div>
 
+                     <div class="row">
+                        <div class="col s12 m12 l12 xl12">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright white">
+                    <div class="container black-text">
+                        <div class="col s12 m12 l12 xl12 offset-l4 offset-xl4">
+                        <a class="black-text text-lighten-4" style="margin-left:50%;" href="http://www.bluewolf.com.mx/Internacionalizacion/privacidad.pdf" target="_blank" >Privacidad</a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </footer>
+        </div>
         <!--JavaScript at end of body for optimized loading-->
         <script type="text/javascript" src="js/materialize.min.js"></script>
         <script type="text/javascript" src="js/initialize.js"></script>
