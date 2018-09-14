@@ -1,26 +1,10 @@
 <?
     include "coneccion.php";
-    $query = "SELECT contacto1,empresa,nombre FROM internacionalizacion";
-    $respuesta = mysql_query($query) or die('error: $query'.mysql_error());
-    $count=0;
-    while ($res = mysql_fetch_assoc($respuesta)) 
-    {
-        $count++;
-        $correo1 = $res['nombre'];
-            $empresa1 = $res['empresa'];
-            $contacto = $res['contacto1'];
-            //convierte a minusculas y capitalize primera en mayuscula.
-            $nombrecontacto = ucwords(strtolower($contacto));
-            //correo
-            $body = "<b>¡Hola $nombrecontacto! </b> <br><br>";
-            $body .= "Nos acercamos cada vez más a la etapa final de la selección de empresas participantes, agradecemos nuevamente tu interés de participar y formar parte de este proyecto, te recordamos que el proceso de selección esta conformado por 2 etapas, por lo que te invitamos a concluir con tu registro. <br><br>";
-            $body .= "Puedes ingresar en la siguiente liga: www.bluewolf.com.mx/Internacionalizacion/ en donde podrás dar un click en Paso 2 “Completar Ficha Técnica” <br><br>";
-            $body .= "Si tienes una duda o comentario no dudes en comunicarte con Lucy Barrera al 439 07 70. <br><br>";
-            $body .="<br><img src=\"http://www.bluewolf.com.mx/Internacionalizacion/images/piec.jpg\" width=\"400\" height=\"200\">";
-            $cabeceras = "From: <info@bluewolf.com.mx> \r\n";
-            $cabeceras .= "Bcc: liz.martinez@bluewolf.com.mx,luis.perez@bluewolf.com.mx \r\n";
-            $cabeceras .= "Content-type: text/html; charset=UTF-8 \r\n";
-            mail($correo1,"Internacionalizacion",$body,$cabeceras);
-    }
-    echo "$count correos enviados";
+    $Body = "<b>¡Has concluido tu registro a Misión Comercial Navarra - Chihuahua 2018!</b> <br><br>";
+            $Body .= "Te recordamos que el día 11 de Octubre te esperamos en la Expo Industrial que se levará a cabo en el Centro de Convenciones y Exposiciones de Chihuahua, seguiremos en contacto contigo para hacerte llegar los horarios de las entrevistas para que puedas conocer a las empresas de tu interés. <br><br>";
+            $Body .= "Cualquier duda no dudes en comunicarte con Lizbeth Martínez al (614) 191 11 36 ó enviar correo a liz.martinez@bluewolf.com.mx";
+            $Cabeceras = "From: <info@bluewolf.com.mx> \r\n";
+            $Cabeceras .= "Bcc: liz.martinez@bluewolf.com.mx,luis.perez@bluewolf.com.mx \r\n";
+            $Cabeceras .= "Content-type: text/html; charset=UTF-8 \r\n";
+            mail("contacto@atemporelogistica.com","Misión Comercial Navarra",$Body,$Cabeceras);
 ?>
