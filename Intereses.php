@@ -12,7 +12,7 @@
         $correo=$_POST['correo'];
         $clientes=$_POST['clientes'];
         $descripcion=$_POST['desc'];
-
+        $flag=false;
         $InsertEmpresa = "INSERT INTO chihuahua(tipo,nombre,localidad,persona,telefono,correo,clientes,descripcion)VALUES($TipoEmpresa,'$Nombre','$localidad','$persona','$tel','$correo','$clientes','$descripcion')";
         $ResultadoInsert = mysql_query($InsertEmpresa) or die("Query fallo: $InsertEmpresa" . mysql_error());
         $IdEmpresa = mysql_insert_id();
@@ -29,7 +29,7 @@
         if ($flag==true)
         {
             $QueryCorreo = "SELECT correo FROM chihuahua WHERE id_chih=$IdEmpresa";
-            $ResultadoCorreo = mysql_query() or die("Query fallo: $QueryCorreo".mysql_error());
+            $ResultadoCorreo = mysql_query($QueryCorreo) or die("Query fallo: $QueryCorreo".mysql_error());
             $ResCorreo = mysql_fetch_assoc($ResultadoCorreo);
             $Correo = $ResCorreo['correo'];
 
